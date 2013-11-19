@@ -1,0 +1,71 @@
+This project is to design and implement a database system for a customer order processing system in a company using a relational database Server as follows:
+
+The target of our relational database system is an enterprise that consists of a number of stores located in different cities and states. Each state has many cities, and a headquarter address coordinating all of its stores in the state. The location of the stores is also recorded. Each store is located in one city, and there can be many stores in the city. The enterprise’s goal is to meet all of the customer’s requirements from stores located in the customer’s city. If the requirement cannot be met, the company will turn to the other cities where the item can be found if there is any. Each store holds a variety of items in various quantity. Each item can be held in different stores. In addition, the enterprise keeps the information of the customers. The city location of the customer, together with the data of the customer’s first order, is stored by the existing system.
+
+There are two kinds of customers: Employee and Regular, exclusively. There are also two kinds of customers on the market: Walk-in and e-commerce, inclusively. Each customer lives in one city only, and the enterprise will try to satisfy the customer’s order items by the present stock in the city where the customer lives. The order of each customer can be for any quantity of any number of items, and each order is uniquely identified by an order number. The same item can be in different orders.
+
+Some processing information is important for the enterprise. For example, the total quantity of item stored in each city. After every time an item is taken, the company needs to know the total quantities of the item in all the stores in a city.
+
+A customer must have a customer ID with a name and a post address, (or headquarter address in case of employee customer) and can be a person, a company or an government.
+
+Data requirements
+
+Data       -                   Description
+
+City_id -                                           The ID number of a city
+City_name -                                     The name of a city
+Headquarter_addr -                        The headquarter address of a city
+State -                                             The state of a city
+Store_id -                                        The ID number of a store
+Phone -                                            The phone number of a store
+Item_id -                                          The ID number of an item
+Description -                                    The description of an item
+Size -                                               The size of an item
+Weight -                                          The weight of an item
+Unit_price -                                      The unit price of an item
+Qantity_held -                                  The quantity held of an item in a store
+Customer_id -                                  The ID number of a customer
+First_order_date -                           The first order date by a customer
+Employee_Customer_name -          The name of a employee customer
+Employee_discount_rate -              The discount rate of a purchase by an employee
+Regular_Customer_name -             The name of a non-employee customer
+Regular_Customer_address -         The address of a non-employee customer
+Walkin_Customer_name -              The name of a customer walking into the shop for purchase
+Walkin_Customer_address -          The address of a walk-in customer
+eCommerce_Customer_name -      The name of a customer who purchases good on the Internet
+eCommerce_Customer_email -      The email address of an eCommerce Customer
+Order_no -                                      The order number of an order
+Order_date -                                   The date of an order
+Quantity_ordered -                         The quantity of an item in an order
+Ordered_price -                              The unit price of an item in an order
+
+Business requirements:
+The retail store ordering system must produce the following reports;
+1. Find all the stores along with city, state, phone, description, size, weight and unit  price that hold a particular item of stock.
+2. Find all the orders along with customer id and order date that can be fulfilled by a given store.
+3. Find all stores along with city name and phone that hold items ordered by a given customer.
+4. Find the headquarter address along with city and state of all stores that hold stocks of an item above a particular level.
+5. For each customer order, show the items ordered along with description, store id and city name and the stores that hold the items.
+6. Find the city and the state in which a given customer lives.
+7. Find the stock level of a particular item in all stores in a particular city.
+8. Find the items, quantity ordered, customer, store and city of an order.
+9. Find a list of employee customers with name and discount rate.
+10. Find a list of non-employee customers with name and post address.
+11. Find a list of all customers sorted by sales volume in ascending order.
+12. Find a list of walk-in customer sorted by name.
+13. Find a list of eCommerce customer sorted by email address.
+
+Content of the project report:
+1. Introduction (objective and scope of the project)
+2. Business requirement (users requirements)
+3. System Functional Specification (input and output of data and reports requirements)
+4. Extended Entity Relationship Model (conceptual model of database design)
+5. Data Flow Diagrams (input and output of each programming procedure using SQL)
+6. Relational schema (relational data definition language in SQL)
+7. Relational database normal form specification (level of data normal form validation)
+8. Test cases of the developed database system (screen layouts of each report generation)
+9. SQL programs listing
+10. ScreenCAM Demonstration CD.
+
+Marking scheme:
+The project assignment is counted 25% of the coursework and which is divided by 6% EER model, 6% SQL, 6% voiced prototype demonstration and 7% report document. Late submission will be penalized by 50% reduction marking. 
