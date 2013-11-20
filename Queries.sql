@@ -12,13 +12,15 @@ SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name
 -- 6. Find the city and the state in which a given customer lives.
 
 -- 7. Find the stock level of a particular item in all stores in a particular city.
+SELECT 
 
 -- 8. Find the items, quantity ordered, customer, store and city of an order.
 
 -- 9. Find a list of employee customers with name and discount rate.
-SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee;
+SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee ORDER BY employee.Customer_id;;
 
 -- 10. Find a list of non-employee customers with name and post address.
+SELECT regular.Regular_customer_name as name, regular.Regular_customer_address as address FROM regular ORDER BY regular.Customer_id;
 
 -- 11. Find a list of all customers sorted by sales volume in ascending order.
 
