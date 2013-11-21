@@ -27,7 +27,7 @@
 	command = "CREATE TABLE Store_hold_Item (Store_id CHAR(4), Item_id CHAR(4), Quantity_held INT, PRIMARY KEY(Store_id, Item_id), FOREIGN KEY(Store_id) REFERENCES Store(Store_id), FOREIGN KEY (Item_id) REFERENCES Item(Item_id));";
 	statement.executeUpdate(command);
 	
-	command = "CREATE TABLE Customer (Customer_id CHAR(4), First_order_date DATE, PRIMARY KEY(Customer_id));";
+	command = "CREATE TABLE Customer (Customer_id CHAR(4), First_order_date DATE, City_id CHAR(4), PRIMARY KEY(Customer_id), FOREIGN KEY(City_id) REFERENCES City(City_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Order (Order_no INT, Order_date DATE, Customer_id CHAR(4), PRIMARY KEY(Order_no), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";

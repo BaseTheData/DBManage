@@ -10,6 +10,7 @@ SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name
 -- 5. For each customer order, show the items ordered along with description, store id and city name and the stores that hold the items.
 
 -- 6. Find the city and the state in which a given customer lives.
+SELECT city.city_name as city, city.state as state FROM city WHERE Customer.Customer_id='"+a+"' AND Customer.city_id=city.city_id;
 
 -- 7. Find the stock level of a particular item in all stores in a particular city.
 SELECT 
