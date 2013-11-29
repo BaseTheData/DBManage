@@ -12,7 +12,7 @@
 		
     Statement statement = con.createStatement();
 								
-    String command = "CREATE TABLE States (State CHAR(20), Headquarter_addr CHAR( 4), PRIMARY KEY(State));";
+    String command = "CREATE TABLE States (State CHAR(20), Headquarter_addr CHAR(4), PRIMARY KEY(State));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE City (City_id CHAR(4), City_name CHAR(15), State CHAR(15), PRIMARY KEY(City_id), FOREIGN KEY(State) REFERENCES States(State));";
@@ -33,7 +33,7 @@
 	command = "CREATE TABLE Order (Order_no INT, Order_date DATE, Customer_id CHAR(4), PRIMARY KEY(Order_no), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no INT, Quantity_ordered INT, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Order(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
+	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no INT, Quantity_ordered INT, Ordered_price REAL, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Order(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Person (Customer_id CHAR(4), PRIMARY KEY(Customer_id));";
@@ -45,7 +45,7 @@
 	command = "CREATE TABLE Government (Customer_id CHAR(4), PRIMARY KEY(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Employee (Customer_id CHAR(4), Employee_customer_name CHAR(15), Employee_discount_rate FLOAT, PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE Employee (Customer_id CHAR(4), Employee_customer_name CHAR(15), Employee_discount_rate FLOAT, Headquarter_addr CHAR(4), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Regular (Customer_id CHAR(4), Regular_customer_name CHAR(15), Regular_customer_address CHAR(80), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
