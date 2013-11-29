@@ -2,7 +2,7 @@
 <HTML>
 	<HEAD>
 	<TITLE>
-		Query10_result
+		Query12_result
 	</TITLE>
 	</HEAD>
 
@@ -13,27 +13,24 @@
 	Connection con = DriverManager.getConnection("jdbc:odbc:project");
 	Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 							  	
-	String f1, f2;
+	String f1;
 		
-	ResultSet rs = stmt.executeQuery("SELECT regular.Regular_customer_name as name, regular.Regular_customer_address as address FROM regular ORDER BY regular.Customer_id;");
+	ResultSet rs = stmt.executeQuery("SELECT walkin.Walkin_customer_name as name FROM walkin ORDER BY walkin.Walkin_customer_name;");
 
 	%>
-	10. Find a list of non-employee customers with name and post address
+	12. Find a list of walk-in customer sorted by name.
 	<br><br>
 	<TABLE  bgcolor=DodgerBlue>
 		<TR  bgcolor=SkyBlue>
-			<TD><B><font>Regular Customer Name</font></B></TD>
-			<TD><B><font>regular Customer Address</font></B></TD>
+			<TD><B><font>Walkin Customer Name</font></B></TD>
 		</TR>	
 		<%	
 	 	while ( rs.next())
 		{
 			f1 = rs.getString("name");
-			f2 = rs.getString("address");
 		%>
 		<TR bgcolor=white>
 			<TD><%= f1 %></TD>
-			<TD><%= f2 %></TD>
 		</TR>
 	<%
 	}
