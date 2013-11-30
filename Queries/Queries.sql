@@ -7,6 +7,7 @@ SELECT Order.order_no as order, Customer.Customer_id as id, Order.order_date as 
 -- 3. Find all stores along with city name and phone that hold items ordered by a given customer.
 
 -- 4. Find the headquarter address along with city and state of all stores that hold stocks of an item above a particular level.
+SELECT city.city_name as city, state.state as state, state.headquarter_addr as hq FROM city, state, Store_hold_Item, store WHERE Store_hold_Item.item_id='"+a"' AND Store_hold_Item.quantity_held>'"+b+"' AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id AND city.state=state.state;
 
 -- 5. For each customer order, show the items ordered along with description, store id and city name and the stores that hold the items.
 
