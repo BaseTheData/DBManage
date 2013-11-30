@@ -16,7 +16,7 @@
 	String a, f1, f2;
 	a = request.getParameter("Query6_select");
 		
-	ResultSet rs = stmt.executeQuery("SELECT city.city_name as city, city.state as state FROM city WHERE Customer.Customer_id='"+a+"' AND Customer.city_id=city.city_id;");
+	ResultSet rs = stmt.executeQuery("SELECT city.city_name as city, city.state as state FROM city, customer WHERE Customer.Customer_id='"+a+"' AND Customer.city_id=city.city_id;");
 
 	%>
 	6. Find the city and the state in which a given customer lives.
