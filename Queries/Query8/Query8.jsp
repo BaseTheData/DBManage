@@ -15,7 +15,7 @@
 						  	
 	try
 	{ 
-		ResultSet rs = stmt.executeQuery("SELECT  order_no FROM order");
+		ResultSet rs = stmt.executeQuery("SELECT  order_no FROM orders");
 	%>
 
 	8. Find the items, quantity ordered, customer and city of an order.
