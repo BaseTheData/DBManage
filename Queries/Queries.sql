@@ -2,7 +2,7 @@
 SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name as d, city.state as e, store.phone as f, item.description as g,item.sizes as h, item.weight as i, item.unit_price as j FROM city, store, item, store_hold_item WHERE city.city_id = store.city_id AND store.store_id = store_hold_item.store_id AND store_hold_item.item_id = item.item_id AND item.item_id ='"+a+"' ORDER BY store.store_id;
 
 -- 2. Find all the orders along with customer id and order date that can be fulfilled by a given store.
--- SELECT Orders.order_no as order, Customer.Customer_id as id, Orders.order_date as orderdate FROM customer, (order JOIN (Order_contains_items JOIN (items JOIN (Store_hold_Item JOIN Store)))) WHERE 
+SELECT Orders.order_no as order, Orders.Customer_id as id, Orders.order_date as orderdate FROM orders, Order_contains_items, Store_hold_Item WHERE Store_hold_Item.store_id='"+a+"' AND Order_contains_items.order_no=orders.order_no AND NOT EXISTS (SELECT * FROM Order_contains_items, Store_hold_Item WHERE Order_contains_items.quantity_ordered>Store_hold_Item.quantity_held AND Store_hold_Item.store_id='"+a+"' AND Order_contains_items.order_no=orders.order_no);
 
 -- 3. Find all stores along with city name and phone that hold items ordered by a given customer.
 SELECT Store_hold_Item.item_id as items, Store_hold_Item.store_id as stores, city.city_name as city, store.phone as phone FROM Store_hold_Item, store, city WHERE (Store_hold_Item.item_id IN (SELECT Order_contains_items.item_id FROM Order_contains_items WHERE Order_contains_items.order_no = Orders.order_no AND Orders.Customer_id ='"+a+"')) AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;
@@ -23,16 +23,16 @@ SELECT SUM(Store_hold_Item.quantity_held) as stock, city.city_name as city, item
 SELECT Order_contains_items.item_id as item, item.description as des, Order_contains_items.quantity_ordered as qo, Orders.Customer_id as customer, city.city_name as city FROM orders, item, Order_contains_items, customer, city WHERE Order_contains_items.order_no='"+a+"' AND Order_contains_items.order_no=orders.order_no AND item.item_id=Order_contains_items.item_id AND Orders.Customer_id=Customer.Customer_id AND Customer.city_id=city.city_name;
 
 -- 9. Find a list of employee customers with name and discount rate.
-SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee ORDER BY employee.Customer_id;;
+SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee ORDER BY employee.Customer_id;
 
 -- 10. Find a list of non-employee customers with name and post address.
 SELECT regular.Regular_customer_name as name, regular.Regular_customer_address as address FROM regular ORDER BY regular.Customer_id;
 
 -- 11. Find a list of all customers sorted by sales volume in ascending order.
--- SELECT (Regular.Regular_customer_name, Employee.Employee_customer_name) as name from regular UNION employee 
+SELECT Regular.Regular_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM regular, Order_contains_items WHERE regular.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no UNION SELECT Employee.Employee_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM employee, Order_contains_items WHERE employee.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no ORDER BY sales;
 
 -- 12. Find a list of walk-in customer sorted by name.
 SELECT walkin.Walkin_customer_name as name FROM walkin ORDER BY walkin.Walkin_customer_name;
 
 -- 13. Find a list of eCommerce customer sorted by email address.
-SELECT ecommerce.Ecommerce_customer_name FROM ecommerce ORDER BY ecommerce.Ecommerce_customer_email;
+SELECT ecommerce.Ecommerce_customer_name as name, ecommerce.Ecommerce_customer_email as email FROM ecommerce ORDER BY email;

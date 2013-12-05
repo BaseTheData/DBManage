@@ -2,7 +2,7 @@
 <HTML>
 	<HEAD>
 	<TITLE>
-		Query13_result
+		Query11_result
 	</TITLE>
 	</HEAD>
 
@@ -15,21 +15,21 @@
 							  	
 	String f1, f2;
 		
-	ResultSet rs = stmt.executeQuery("SELECT ecommerce.Ecommerce_customer_name as name, ecommerce.Ecommerce_customer_email as email FROM ecommerce ORDER BY email");
+	ResultSet rs = stmt.executeQuery("SELECT Regular.Regular_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM regular, Order_contains_items WHERE regular.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no UNION SELECT Employee.Employee_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM employee, Order_contains_items WHERE employee.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no ORDER BY sales;");
 
 	%>
-	13. Find a list of eCommerce customer sorted by email address
+	11. Find a list of all customers sorted by sales volume in ascending order.
 	<br><br>
 	<TABLE  bgcolor=DodgerBlue>
 		<TR  bgcolor=SkyBlue>
-			<TD><B><font>ECommerce Customer Name</font></B></TD>
-			<TD><B><font>ECommerce Customer EMail</font></B></TD>
+			<TD><B><font>Customer Name</font></B></TD>
+			<TD><B><font>Sales Volume</font></B></TD>
 		</TR>	
 		<%	
 	 	while ( rs.next())
 		{
 			f1 = rs.getString("name");
-			f2 = rs.getString("email");
+			f2 = rs.getString("sales");
 		%>
 		<TR bgcolor=white>
 			<TD><%= f1 %></TD>
