@@ -15,7 +15,7 @@
 							  	
 	String f1, f2;
 		
-	ResultSet rs = stmt.executeQuery("SELECT ecommerce.Ecommerce_customer_name as name, ecommerce.Ecommerce_customer_email as email FROM ecommerce ORDER BY email");
+	ResultSet rs = stmt.executeQuery("SELECT ECommerce.Ecommerce_customer_name as name, ECommerce.Ecommerce_customer_email as email FROM ECommerce ORDER BY Ecommerce_customer_email");
 
 	%>
 	13. Find a list of eCommerce customer sorted by email address

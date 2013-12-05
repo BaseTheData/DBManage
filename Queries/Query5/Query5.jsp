@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Big5" import="java.util.Date, java.io.*, java.sql.*"%>
+<%@ page contentType="text/html; charset=Big5" import="java.util.*, java.io.*, java.sql.*, java.lang.*"%>
 <HTML>
 	<HEAD>
 	<TITLE>
@@ -17,12 +17,19 @@
 							  	
 	String a, f1, f2, f3, f4;
 
-	ResultSet rs1 = stmt.executeQuery("SELECT Order_no FROM Order");
+	ResultSet rs1 = stmt.executeQuery("SELECT Order_no FROM Orders");
 	
+	HashSet<String> h = new HashSet<String>();
 	while (rs1.next())
+		h.add(rs1.getString("Order_no"));
+	rs1.close();
+	
+	Iterator<String> i = h.iterator();
+	
+	while (i.hasNext())
 	{
-		a = rs1.getString("Order_no");
-		ResultSet rs2 = stmt.executeQuery("SELECT Order_contains_items.item_id as id, item.description as des, store.store_id as store, city.city_name as city FROM Order_contains_items, item, store, city, Store_hold_Item WHERE Order_contains_items.order_no='"+a+"' AND Order_contains_items.item_id=item.item_id AND Store_hold_Item.item_id=item.item_id AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;");
+		a = i.next();
+		rs1 = stmt.executeQuery("SELECT Order_contains_items.item_id as id, item.description as des, store.store_id as store, city.city_name as city FROM Order_contains_items, item, store, city, Store_hold_Item WHERE Order_contains_items.order_no='"+a+"' AND Order_contains_items.item_id=item.item_id AND Store_hold_Item.item_id=item.item_id AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;");
 	%>
 		<FONT SIZE = 4 COLOR = BLACK face="Arial">
 		Order No. <%= a %>
@@ -37,12 +44,12 @@
 			<TD><B><font>City</font></B></TD>
 		</TR>
 		<%	
-	 	while ( rs2.next())
+	 	while ( rs1.next())
 		{
-			f1 = rs.getString("id");
-			f2 = rs.getString("des");
-			f3 = rs.getString("store");
-			f4 = rs.getString("city");
+			f1 = rs1.getString("id");
+			f2 = rs1.getString("des");
+			f3 = rs1.getString("store");
+			f4 = rs1.getString("city");
 		%>
 		<TR bgcolor=white>
 			<TD><%= f1 %></TD>

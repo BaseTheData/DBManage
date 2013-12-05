@@ -16,7 +16,6 @@
 	try
 	{ 
 		ResultSet rs = stmt.executeQuery("SELECT city_name FROM City");
-		ResultSet rs1 = stmt.executeQuery("SELECT item_id FROM Item");
 	%>
 
 	7. Find the stock level of a particular item in all stores in a particular city.
@@ -36,10 +35,11 @@
 		</select>
 		<select name=Query7_select2 size=1>
    		<%
-   		while (rs1.next())
+		rs = stmt.executeQuery("SELECT item_id FROM Item");
+   		while (rs.next())
 		{
 		%> 
-			<option><%= rs1.getString("item_id")%></option>
+			<option><%= rs.getString("item_id")%></option>
 		<%
 		}
 		%>

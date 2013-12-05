@@ -13,12 +13,11 @@
 	Connection con = DriverManager.getConnection("jdbc:odbc:project");
 	Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 							  	
-	String a, f1, f2, f3, f4;
-	int b;
+	String a, f1, f2, f3, f4, b;
 	a = request.getParameter("Query4_select1");
 	b = request.getParameter("Query4_select2");
 		
-	ResultSet rs = stmt.executeQuery("SELECT city.city_name as city, state.state as state, state.headquarter_addr as hq, Store_hold_Item.quantity_held as stock FROM city, state, Store_hold_Item, store WHERE Store_hold_Item.item_id='"+a+"' AND Store_hold_Item.quantity_held>'"+b+"' AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id AND city.state=state.state;");
+	ResultSet rs = stmt.executeQuery("SELECT city.city_name as city, state.state as state, state.headquarter_addr as hq, Store_hold_Item.quantity_held as stock FROM city, state, Store_hold_Item, store WHERE Store_hold_Item.item_id='"+a+"' AND CAST(Store_hold_Item.quantity_held AS Integer [4]) > '"+b+"' AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id AND city.state=state.state;");
 	%>
 	4. Find the headquarter address along with city and state of all stores that hold stocks of an item above a particular level.
 	<br><br>
