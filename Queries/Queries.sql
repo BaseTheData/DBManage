@@ -23,16 +23,16 @@ SELECT SUM(Store_hold_Item.quantity_held) as stock, city.city_name as city, item
 SELECT Order_contains_items.item_id as item, item.description as des, Order_contains_items.quantity_ordered as qo, Orders.Customer_id as customer, city.city_name as city FROM orders, item, Order_contains_items, customer, city WHERE Order_contains_items.order_no='"+a+"' AND Order_contains_items.order_no=orders.order_no AND item.item_id=Order_contains_items.item_id AND Orders.Customer_id=Customer.Customer_id AND Customer.city_id=city.city_name;
 
 -- 9. Find a list of employee customers with name and discount rate.
-SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee ORDER BY employee.Customer_id;;
+SELECT employee.Employee_customer_name as name, employee.Employee_discount_rate as dis FROM employee ORDER BY employee.Customer_id;
 
 -- 10. Find a list of non-employee customers with name and post address.
 SELECT regular.Regular_customer_name as name, regular.Regular_customer_address as address FROM regular ORDER BY regular.Customer_id;
 
 -- 11. Find a list of all customers sorted by sales volume in ascending order.
--- SELECT (Regular.Regular_customer_name, Employee.Employee_customer_name) as name from regular UNION employee 
+SELECT Regular.Regular_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM regular, Order_contains_items WHERE regular.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no UNION SELECT Employee.Employee_customer_name as name, SUM(Order_contains_items.ordered_price) as sales FROM employee, Order_contains_items WHERE employee.Customer_id=orders.Customer_id AND Order_contains_items.order_no=orders.order_no ORDER BY sales;
 
 -- 12. Find a list of walk-in customer sorted by name.
 SELECT walkin.Walkin_customer_name as name FROM walkin ORDER BY walkin.Walkin_customer_name;
 
 -- 13. Find a list of eCommerce customer sorted by email address.
-SELECT ecommerce.Ecommerce_customer_name FROM ecommerce ORDER BY ecommerce.Ecommerce_customer_email;
+SELECT ecommerce.Ecommerce_customer_name as name, ecommerce.Ecommerce_customer_email as email FROM ecommerce ORDER BY email;
