@@ -21,7 +21,7 @@
 	command = "CREATE TABLE Store(Store_id CHAR(4), City_id CHAR(4), Phone CHAR(8), PRIMARY KEY(Store_id), FOREIGN KEY(City_id) REFERENCES City(City_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Item (Item_id CHAR(4), Description CHAR(40), Sizes CHAR(40), Weight REAL, Unit_price REAL, PRIMARY KEY(Item_id));";
+	command = "CREATE TABLE Item (Item_id CHAR(4), Description CHAR(40), Size CHAR(40), Weight REAL, Unit_price REAL, PRIMARY KEY(Item_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Store_hold_Item (Store_id CHAR(4), Item_id CHAR(4), Quantity_held INT, PRIMARY KEY(Store_id, Item_id), FOREIGN KEY(Store_id) REFERENCES Store(Store_id), FOREIGN KEY (Item_id) REFERENCES Item(Item_id));";
@@ -33,7 +33,7 @@
 	command = "CREATE TABLE Orders (Order_no INT, Order_date DATE, Customer_id CHAR(4), PRIMARY KEY(Order_no), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no INT, Quantity_ordered INT, Ordered_price REAL, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Orders(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
+	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no CHAR(4), Quantity_ordered INT, Ordered_price REAL, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Orders(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Person (Customer_id CHAR(4), PRIMARY KEY(Customer_id));";

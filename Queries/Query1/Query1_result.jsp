@@ -16,7 +16,7 @@
 	String a, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10;
 	a = request.getParameter("Query1_select");
 		
-	ResultSet rs = stmt.executeQuery("SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name as d, city.state as e, store.phone as f, item.description as g,item.sizes as h, item.weight as i, item.unit_price as j from city, store, item, store_hold_item where city.city_id = store.city_id and store.store_id = store_hold_item.store_id and store_hold_item.item_id = item.item_id and item.item_id ='"+a+"' order by store.store_id;");
+	ResultSet rs = stmt.executeQuery("SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name as d, city.state as e, store.phone as f, item.description as g,item.size as h, item.weight as i, item.unit_price as j from city, store, item, store_hold_item where city.city_id = store.city_id and store.store_id = store_hold_item.store_id and store_hold_item.item_id = item.item_id and item.item_id ='"+a+"' order by store.store_id;");
 
 	%>
 	1. Find all the stores along with city, state, phone, description, size, weight and unit price that hold a particular item of stock.
