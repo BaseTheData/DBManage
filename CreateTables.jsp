@@ -45,16 +45,16 @@
 	command = "CREATE TABLE Government (Customer_id CHAR(4), PRIMARY KEY(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Employee (Customer_id CHAR(4), Employee_customer_name CHAR(15), Employee_discount_rate FLOAT, Headquarter_addr CHAR(4), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE Employee (Customer_id CHAR(4), Employee_customer_name CHAR(15), Employee_discount_rate FLOAT, Headquarter_addr CHAR(4), PRIMARY KEY(Customer_id), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Regular (Customer_id CHAR(4), Regular_customer_name CHAR(15), Regular_customer_address CHAR(80), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE Regular (Customer_id CHAR(4), Regular_customer_name CHAR(15), Regular_customer_address CHAR(80), PRIMARY KEY(Customer_id), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE WalkIn (Customer_id CHAR(4), Walkin_customer_name CHAR(15), Walkin_customer_address CHAR(80), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE WalkIn (Customer_id CHAR(4), Walkin_customer_name CHAR(15), Walkin_customer_address CHAR(80), PRIMARY KEY(Customer_id), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE ECommerce (Customer_id CHAR(4), Ecommerce_customer_name CHAR(15), Ecommerce_customer_email CHAR(80), PRIMARY KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE ECommerce (Customer_id CHAR(4), Ecommerce_customer_name CHAR(15), Ecommerce_customer_email CHAR(80), PRIMARY KEY(Customer_id), FOREIGN KEY(Customer_id)  REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
 	if(stmt != null) stmt.close(); 
