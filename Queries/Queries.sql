@@ -2,7 +2,7 @@
 SELECT item.item_id as a, store.store_id as b, city.city_id as c, city.city_name as d, city.state as e, store.phone as f, item.description as g,item.sizes as h, item.weight as i, item.unit_price as j FROM city, store, item, store_hold_item WHERE city.city_id = store.city_id AND store.store_id = store_hold_item.store_id AND store_hold_item.item_id = item.item_id AND item.item_id ='"+a+"' ORDER BY store.store_id;
 
 -- 2. Find all the orders along with customer id and order date that can be fulfilled by a given store.
--- SELECT Orders.order_no as order, Customer.Customer_id as id, Orders.order_date as orderdate FROM customer, (order JOIN (Order_contains_items JOIN (items JOIN (Store_hold_Item JOIN Store)))) WHERE 
+SELECT Orders.order_no as order, Orders.Customer_id as id, Orders.order_date as orderdate FROM orders, Order_contains_items, Store_hold_Item WHERE Store_hold_Item.store_id='"+a+"' AND Order_contains_items.order_no=orders.order_no AND NOT EXISTS (SELECT * FROM Order_contains_items, Store_hold_Item WHERE Order_contains_items.quantity_ordered>Store_hold_Item.quantity_held AND Store_hold_Item.store_id='"+a+"' AND Order_contains_items.order_no=orders.order_no);
 
 -- 3. Find all stores along with city name and phone that hold items ordered by a given customer.
 SELECT Store_hold_Item.item_id as items, Store_hold_Item.store_id as stores, city.city_name as city, store.phone as phone FROM Store_hold_Item, store, city WHERE (Store_hold_Item.item_id IN (SELECT Order_contains_items.item_id FROM Order_contains_items WHERE Order_contains_items.order_no = Orders.order_no AND Orders.Customer_id ='"+a+"')) AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;
