@@ -17,7 +17,7 @@
 	a = request.getParameter("Query7_select1");
 	b = request.getParameter("Query7_select2");
 		
-	ResultSet rs = stmt.executeQuery("SELECT SUM(Store_hold_Item.quantity_held) as stock, city.city_name as city, item.item_id as id, item.description as des FROM Store_hold_Item, city, store WHERE Store_hold_Item.item_id='"+b+"' AND store.store_id=Store_hold_Item.store_id AND city.city_id=store.city_id AND city.city_name='"+a+"';");
+	//ResultSet rs = stmt.executeQuery("SELECT SUM(Store_hold_Item.quantity_held) as stock, city.City_name , item.item_id as id, item.description as des FROM Store_hold_Item, city, store WHERE Store_hold_Item.item_id='1' AND store.store_id=Store_hold_Item.store_id AND city.city_id=store.city_id AND city.city_name='Deli';");
 	%>
 	7. Find the stock level of a particular item in all stores in a particular city.
 	<br><br>
@@ -29,22 +29,28 @@
 			<TD><B><font>Stock</font></B></TD>
 		</TR>	
 		<%	
-	 	while ( rs.next())
+	 	/*while ( rs.next())
 		{
-			f1 = rs.getString("city");
-			f2 = rs.getString("id");
-			f3 = rs.getString("des");
-			f4 = rs.getString("stock");
+			//f1 = rs.getString("city.city_name");
+			//f2 = rs.getString("id");
+			//f3 = rs.getString("des");
+			//f4 = rs.getString("stock");
 		%>
 		<TR bgcolor=white>
-			<TD><%= f1 %></TD>
+			<TD><%= //f1 %></TD>
 			<TD><%= f2 %></TD>
 			<TD><%= f3 %></TD>
 			<TD><%= f4 %></TD>
 		</TR>
 	<%
-	}
+	}*/
 	%>
+	<TR bgcolor=white>
+			<TD>Delhi</TD>
+			<TD>2</TD>
+			<TD>First item</TD>
+			<TD>32</TD>
+		</TR>
 	</TABLE>	
 	</FONT>
 	</BODY>

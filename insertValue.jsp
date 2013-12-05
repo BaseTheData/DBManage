@@ -23,7 +23,7 @@
 	statement.executeUpdate(command);
 	command = "INSERT INTO City values('2','Tokyo','Japan');";
 	statement.executeUpdate(command);
-	command = "INSERT INTO City values('3','Deli','India');";
+	command = "INSERT INTO City values('3','Delhi','India');";
 	statement.executeUpdate(command);
 	
     command = "INSERT INTO Customer values('1','17/10/2008','1');";
@@ -87,8 +87,12 @@
 	
 	command = "INSERT INTO Orders (Order_no, Order_date, Customer_id) values(1,'12/3/2013','1');";
 	statement.executeUpdate(command);
+	command = "INSERT INTO Orders (Order_no, Order_date, Customer_id) values(6,'4/4/2010','1');";
+	statement.executeUpdate(command);
 	
-	command = "INSERT INTO Order_contains_items values('1',1,'2',500);";
+	command = "INSERT INTO Order_contains_items values('1',1,'2',40);";
+	statement.executeUpdate(command);
+	command = "INSERT INTO Order_contains_items values('3',6,'1',41);";
 	statement.executeUpdate(command);
 	
 	command = "INSERT INTO Person VALUES('1');";
