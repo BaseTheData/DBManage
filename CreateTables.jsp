@@ -12,10 +12,10 @@
 		
     Statement statement = con.createStatement();
 								
-    String command = "CREATE TABLE States (State CHAR(20), Headquarter_addr CHAR(4), PRIMARY KEY(State));";
+    String command = "CREATE TABLE State (State CHAR(20), Headquarter_addr CHAR(4), PRIMARY KEY(State));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE City (City_id CHAR(4), City_name CHAR(15), State CHAR(15), PRIMARY KEY(City_id), FOREIGN KEY(State) REFERENCES States(State));";
+	command = "CREATE TABLE City (City_id CHAR(4), City_name CHAR(15), State CHAR(15), PRIMARY KEY(City_id), FOREIGN KEY(State) REFERENCES State(State));";
 	statement.executeUpdate(command);
 	
 	command = "CREATE TABLE Store(Store_id CHAR(4), City_id CHAR(4), Phone CHAR(8), PRIMARY KEY(Store_id), FOREIGN KEY(City_id) REFERENCES City(City_id));";
