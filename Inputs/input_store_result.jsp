@@ -6,7 +6,7 @@
 	Connection con = DriverManager.getConnection("jdbc:odbc:project");
 	Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 %>		
-	<a href="input_result.jsp">Back to the form</a><br> 	
+	<a href="input_store.jsp">Back to the form</a><br> 	
 	<%								  	
         int a=1;
 		String c1,c2,c3;
