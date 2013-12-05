@@ -30,10 +30,10 @@
 	command = "CREATE TABLE Customer (Customer_id CHAR(4), First_order_date DATE, City_id CHAR(4), PRIMARY KEY(Customer_id), FOREIGN KEY(City_id) REFERENCES City(City_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Order (Order_no INT, Order_date DATE, Customer_id CHAR(4), PRIMARY KEY(Order_no), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
+	command = "CREATE TABLE Orders (Order_no INT, Order_date DATE, Customer_id CHAR(4), PRIMARY KEY(Order_no), FOREIGN KEY(Customer_id) REFERENCES Customer(Customer_id));";
 	statement.executeUpdate(command);
 
-	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no INT, Quantity_ordered INT, Ordered_price REAL, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Order(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
+	command = "CREATE TABLE Order_contains_items (Item_id CHAR(4), Order_no INT, Quantity_ordered INT, Ordered_price REAL, PRIMARY KEY(Item_id, Order_no), FOREIGN KEY(Order_no) REFERENCES Orders(Order_no), FOREIGN KEY(Item_id) REFERENCES Item(Item_id));";
 	statement.executeUpdate(command);
 
 	command = "CREATE TABLE Person (Customer_id CHAR(4), PRIMARY KEY(Customer_id));";
