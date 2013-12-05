@@ -16,7 +16,7 @@
 	String a, b, f1, f2, f3, f4, f5;
 	a = request.getParameter("Query8_select");
 		
-	ResultSet rs = stmt.executeQuery("SELECT Order_contains_items.item_id as item, item.description as des, Order_contains_items.quantity_ordered as qo, Orders.Customer_id as customer, city.city_name as city FROM orders, item, Order_contains_items, customer, city WHERE Order_contains_items.order_no='"+a+"' AND Order_contains_items.order_no=orders.order_no AND item.item_id=Order_contains_items.item_id AND Orders.Customer_id=Customer.Customer_id AND Customer.city_id=city.city_name;");
+	ResultSet rs = stmt.executeQuery("SELECT Order_contains_items.item_id as item, item.description as des, Order_contains_items.quantity_ordered as qo, Orders.Customer_id as customer, city.city_name as city FROM orders, item, Order_contains_items, customer, city WHERE Order_contains_items.order_no= '"+a+"' AND Order_contains_items.order_no=orders.order_no AND item.item_id=Order_contains_items.item_id AND Orders.Customer_id=Customer.Customer_id AND Customer.city_id=city.city_id;");
 	%>
 	8. Find the items, quantity ordered, customer and city of an order.
 	<br><br>
@@ -36,6 +36,7 @@
 			f3 = rs.getString("qo");
 			f4 = rs.getString("customer");
 			f5 = rs.getString("city");
+		
 		%>
 		<TR bgcolor=white>
 			<TD><%= f1 %></TD>
@@ -44,9 +45,9 @@
 			<TD><%= f4 %></TD>
 			<TD><%= f5 %></TD>
 		</TR>
-	<%
-	}
-	%>
+		<%
+		}
+		%>
 	</TABLE>	
 	</FONT>
 	</BODY>
