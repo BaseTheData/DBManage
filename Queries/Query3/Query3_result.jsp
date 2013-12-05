@@ -16,7 +16,7 @@
 	String a, f1, f2, f3, f4;
 	a = request.getParameter("Query3_select");
 		
-	ResultSet rs = stmt.executeQuery("SELECT Store_hold_Item.item_id as items, Store_hold_Item.store_id as stores, city.city as city, store.phone as phone FROM Store_hold_Item, store, city WHERE (Store_hold_Item.item_id IN (SELECT Order_contains_items.item_id FROM Order_contains_items WHERE Order_contains_items.order_no = Order.order_no AND Order.Customer_id ='"+a+"')) AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;");
+	ResultSet rs = stmt.executeQuery("SELECT Store_hold_Item.item_id as items, Store_hold_Item.store_id as stores, city.city_name as city, store.phone as phone FROM Store_hold_Item, store, city WHERE (Store_hold_Item.item_id IN (SELECT Order_contains_items.item_id FROM Order_contains_items WHERE Order_contains_items.order_no = Order.order_no AND Order.Customer_id ='"+a+"')) AND Store_hold_Item.store_id=store.store_id AND store.city_id=city.city_id;");
 	%>
 	3. Find all stores along with city name and phone that hold items ordered by a given customer.
 	<br><br>
