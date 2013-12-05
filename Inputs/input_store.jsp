@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=Big5" import="java.util.Date, java.io.*, , java.sql.*"%>
 <HTML> <HEAD> <TITLE>Project input store.jsp</TITLE> </HEAD>
 <BODY> <CENTER> <FONT SIZE = 5 COLOR = blue>Input store</FONT> </CENTER> <HR> 
+<a href="../main.html">Back to the main page</a><br> 	
 <%
 	Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 	Connection con = DriverManager.getConnection("jdbc:odbc:project");
@@ -11,7 +12,7 @@
 		<P>Store id<INPUT type=text name=sid value="" size=4 maxlength=4></P>
 		<P>City id<INPUT type=text name=scityid value="" size=4 maxlength=4></P>
 		<P>Store phone number<INPUT type=String name=spn value=""></P>
-		<INPUT name=submitCustomer type=submit value="Insert">
+		<INPUT name=submitstore type=submit value="Insert">
 	</FORM>
 </BODY>
 </HTML>
